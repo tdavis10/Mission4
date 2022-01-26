@@ -12,10 +12,13 @@ namespace Mission4.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MovieContext blahContext { get; set; }
+        //constructor
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MovieContext someName)
         {
             _logger = logger;
+            blahContext = someName;
         }
 
         public IActionResult Index()
@@ -23,9 +26,28 @@ namespace Mission4.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Podcast()
         {
             return View();
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult MovieForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult MovieForm(MovieResponse ar)
+        {
+            blahContext.Add(ar);
+            blahContext.SaveChanges();
+            return View("Confirmation");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
