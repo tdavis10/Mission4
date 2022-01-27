@@ -45,9 +45,17 @@ namespace Mission4.Controllers
         [HttpPost]
         public IActionResult MovieForm(MovieResponse ar)
         {
-            blahContext.Add(ar);
-            blahContext.SaveChanges();
-            return View("Confirmation");
+            if (ModelState.IsValid)
+            {
+                blahContext.Add(ar);
+                blahContext.SaveChanges();
+                return View("Confirmation");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

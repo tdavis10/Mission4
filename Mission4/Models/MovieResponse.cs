@@ -12,15 +12,15 @@ namespace Mission4.Models
         [Required]
 
         public int MovieID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Input a Category")]
         public string Category { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Input a Title")]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Input a Year")]
         public int Year { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Input a Director")]
         public string Director { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please Input a Rating")]
         public string Rating { get; set; }
         public bool Edited { get; set; }
         public string LentTo { get; set; }
