@@ -77,3 +77,5 @@ C:\Users\obses\source\repos\Mission4\Mission4\obj\Debug\netcoreapp3.1\Mission4.g
 C:\Users\obses\source\repos\Mission4\Mission4\obj\Debug\netcoreapp3.1\Razor\Views\Home\Podcast.cshtml.g.cs
 C:\Users\obses\source\repos\Mission4\Mission4\obj\Debug\netcoreapp3.1\Razor\Views\Home\Confirmation.cshtml.g.cs
 C:\Users\obses\source\repos\Mission4\Mission4\obj\Debug\netcoreapp3.1\Razor\Views\Home\MovieForm.cshtml.g.cs
+C:\Users\obses\source\repos\Mission4\Mission4\obj\Debug\netcoreapp3.1\Razor\Views\Home\ViewMovie.cshtml.g.cs
+C:\Users\obses\source\repos\Mission4\Mission4\obj\Debug\netcoreapp3.1\Razor\Views\Home\Delete.cshtml.g.cs

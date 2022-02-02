@@ -15,15 +15,70 @@ namespace Mission4.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
+            modelBuilder.Entity("Mission4.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Horror/Suspense"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            CategoryName = "Miscellaneous"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            CategoryName = "Television"
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            CategoryName = "VHS"
+                        });
+                });
+
             modelBuilder.Entity("Mission4.Models.MovieResponse", b =>
                 {
                     b.Property<int>("MovieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +107,15 @@ namespace Mission4.Migrations
 
                     b.HasKey("MovieID");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("MovieResponses");
 
                     b.HasData(
                         new
                         {
                             MovieID = 1,
-                            Category = "Comedy",
+                            CategoryId = 2,
                             Director = "Akiva Shaffer",
                             Edited = false,
                             LentTo = "",
@@ -70,7 +127,7 @@ namespace Mission4.Migrations
                         new
                         {
                             MovieID = 2,
-                            Category = "Action/Sci-Fi",
+                            CategoryId = 1,
                             Director = "Richard Marquand",
                             Edited = true,
                             LentTo = "Brett",
@@ -82,7 +139,7 @@ namespace Mission4.Migrations
                         new
                         {
                             MovieID = 3,
-                            Category = "Family/Adventure",
+                            CategoryId = 4,
                             Director = "Andrew Stanton",
                             Edited = false,
                             LentTo = "Conner",
@@ -91,6 +148,15 @@ namespace Mission4.Migrations
                             Title = "Finding Nemo",
                             Year = 2003
                         });
+                });
+
+            modelBuilder.Entity("Mission4.Models.MovieResponse", b =>
+                {
+                    b.HasOne("Mission4.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
