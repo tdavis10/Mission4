@@ -13,7 +13,10 @@ namespace Mission4.Models
 
         public int MovieID { get; set; }
         [Required(ErrorMessage = "Please Input a Category")]
-        public string Category { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
         [Required(ErrorMessage = "Please Input a Title")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Please Input a Year")]

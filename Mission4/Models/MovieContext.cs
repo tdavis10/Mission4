@@ -15,15 +15,30 @@ namespace Mission4.Models
         }
 
         public DbSet<MovieResponse> MovieResponses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+
+                new Category { CategoryId = 1, CategoryName="Action/Adventure"},
+                new Category { CategoryId = 2, CategoryName = "Comedy" },
+                new Category { CategoryId = 3, CategoryName = "Drama" },
+                new Category { CategoryId = 4, CategoryName = "Family" },
+                new Category { CategoryId = 5, CategoryName = "Horror/Suspense" },
+                new Category { CategoryId = 6, CategoryName = "Miscellaneous" },
+                new Category { CategoryId = 7, CategoryName = "Television" },
+                new Category { CategoryId = 8, CategoryName = "VHS" }
+                );
+
+
+
             mb.Entity<MovieResponse>().HasData(
 
                 new MovieResponse
                 {
                     MovieID = 1,
-                    Category = "Comedy",
+                    CategoryId = 2,
                     Title = "Hot Rod",
                     Year = 2007,
                     Director = "Akiva Shaffer",
@@ -36,7 +51,7 @@ namespace Mission4.Models
                 new MovieResponse
                 {
                     MovieID = 2,
-                    Category = "Action/Sci-Fi",
+                    CategoryId = 1,
                     Title = "Star Wars: Return of the Jedi",
                     Year = 1983,
                     Director = "Richard Marquand",
@@ -49,7 +64,7 @@ namespace Mission4.Models
                 new MovieResponse
                 {
                     MovieID = 3,
-                    Category = "Family/Adventure",
+                    CategoryId = 4,
                     Title = "Finding Nemo",
                     Year = 2003,
                     Director = "Andrew Stanton",
